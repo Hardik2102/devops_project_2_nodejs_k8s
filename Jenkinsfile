@@ -3,12 +3,12 @@ pipeline {
     stages {
         stage('Git Checkout') {
             steps {
-                git 'https://github.com/your-username/node-k8s-app.git'
+                git 'https://github.com/Hardik2102/devops_project_2_nodejs_k8s.git'
             }
         }
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t your-dockerhub-username/node-k8s-app .'
+                sh 'docker build -t your-dockerhub-hardik202/node-k8s-app .'
             }
         }
         stage('Push to DockerHub') {
