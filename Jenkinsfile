@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Git Checkout') {
             steps {
-                git 'https://github.com/Hardik2102/devops_project_2_nodejs_k8s.git'
+                git branch: 'main', url: 'https://github.com/Hardik2102/devops_project_2_nodejs_k8s.git'
             }
         }
         stage('Build Docker Image') {
@@ -15,7 +15,7 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub-creds', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
                     sh 'echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin'
-                    sh 'docker push your-dockerhub-username/node-k8s-app'
+                    sh 'docker push your-dockerhub-hardik202/node-k8s-app'
                 }
             }
         }
