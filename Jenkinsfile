@@ -8,14 +8,14 @@ pipeline {
         }
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t your-dockerhub-hardik202/node-k8s-app .'
+                sh 'docker build -t hardik202/node-k8s-app .'
             }
         }
         stage('Push to DockerHub') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub-creds', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
                     sh 'echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin'
-                    sh 'docker push your-dockerhub-hardik202/node-k8s-app'
+                    sh 'docker push hardik202/node-k8s-app'
                 }
             }
         }
